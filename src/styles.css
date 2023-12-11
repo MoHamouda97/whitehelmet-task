@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.infinite-scroll {
+    height: 30rem;
+    overflow: scroll;
+}
+
+.align-center {
+    align-items: center;
+}

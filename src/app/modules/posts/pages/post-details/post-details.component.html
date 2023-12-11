@@ -1,0 +1,39 @@
+<ng-container *ngIf="(post && user) else noData">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="realtive">
+                <img src="assets/images/blog-post.avif" class="img-fluid" />
+                <span class="absolute cover"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12 mb-3">
+            <div class="post-by">
+                <img src="assets/images/man.png" width="65"/>
+                <span class="post-auther mx-3">by {{user.name}} - {{user.email}}</span>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <h1 class="mb-3 post-title">{{post.title}}</h1>
+            <p class="post-content">{{post.body}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h3>Comments</h3>
+        </div>
+        <div class="col-12 mb-3" *ngFor="let comment of comments">
+            <app-post-comments [comment]="comment"></app-post-comments>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #noData>
+    <div class="alert alert-warning text-center" role="alert">
+        Post not Found!
+    </div>
+</ng-template>
