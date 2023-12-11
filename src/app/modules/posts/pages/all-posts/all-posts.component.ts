@@ -1,12 +1,13 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, debounceTime, fromEvent, map, takeUntil } from 'rxjs';
+import { Subject, map, takeUntil } from 'rxjs';
 import { Post } from '../../types/post.type';
 
 @Component({
   selector: 'app-all-posts',
   templateUrl: './all-posts.component.html',
-  styleUrls: ['./all-posts.component.css']
+  styleUrls: ['./all-posts.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AllPostsComponent implements OnInit, OnDestroy {  
   posts: Post[] = [];

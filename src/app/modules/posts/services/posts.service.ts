@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject, from, of } from 'rxjs';
-import { catchError, concatMap, map, share, tap } from 'rxjs/operators';
+import { Observable, ReplaySubject, of } from 'rxjs';
+import { catchError, concatMap, map, share } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Post } from '../types/post.type';
 import { Comment } from '../types/comment.type';
@@ -23,6 +23,7 @@ export class PostsService {
 
   getPost(postId: number): Observable<Post | null> {
     return this.http.get<Post>(`${environment.api}posts/${postId}`).pipe(
+      catchError(_ => of(null))
     )
   }
 
